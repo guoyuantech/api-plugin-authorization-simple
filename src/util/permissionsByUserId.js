@@ -1,4 +1,7 @@
 import _ from "lodash";
+import {
+  defaultCustomerAccountRoles
+} from "./defaultRoles.js";
 
 /**
  * @summary Return all permissions for an account, given a user ID
@@ -17,7 +20,8 @@ export default async function permissionsByUserId(context, userId) {
     // there may be multiple global groups
     const globalGroupPermissions = groups.filter((group) => !group.shopId).map((group) => group.permissions);
     const flattenedGlobalGroupPermissions = globalGroupPermissions.flat();
-    const uniqueGlobalPermissions = _.uniq(flattenedGlobalGroupPermissions);
+    const uniqueGlobalPermissions = _.uniq(flattenedGlobalGroupPermissions.concat(defaultCustomerAccountRoles));
+    console.log('uniqueGlobalPermissions', uniqueGlobalPermissions, flattenedGlobalGroupPermissions);
     // set global roles
     const accountPermissions = { __global_roles__: uniqueGlobalPermissions }; // eslint-disable-line camelcase
 

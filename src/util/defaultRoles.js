@@ -1,3 +1,7 @@
+export const defaultCustomerAccountRoles = [
+  "reaction:legacy:shippingMethods/read"
+];
+
 export const defaultShopManagerRoles = [
   "reaction:legacy:accounts/add:address-books",
   "reaction:legacy:accounts/add:emails",
