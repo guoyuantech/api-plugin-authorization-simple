@@ -21,7 +21,6 @@ export default async function permissionsByUserId(context, userId) {
     const globalGroupPermissions = groups.filter((group) => !group.shopId).map((group) => group.permissions);
     const flattenedGlobalGroupPermissions = globalGroupPermissions.flat();
     const uniqueGlobalPermissions = _.uniq(flattenedGlobalGroupPermissions.concat(defaultCustomerAccountRoles));
-    console.log('uniqueGlobalPermissions', uniqueGlobalPermissions, flattenedGlobalGroupPermissions);
     // set global roles
     const accountPermissions = { __global_roles__: uniqueGlobalPermissions }; // eslint-disable-line camelcase
 
